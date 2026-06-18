@@ -11,7 +11,6 @@ const Footer = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Labs", href: "/labs" },
-    { name: "Contact", href: "/contact" },
   ];
 
   const socialLinks = [

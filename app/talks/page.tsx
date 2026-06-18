@@ -93,7 +93,6 @@ const TalksPage = () => {
               <Link href="/" className="hover:text-blue-300">Home</Link>
               <Link href="/about" className="hover:text-blue-300">About</Link>
               <Link href="/talks" className="text-blue-300 font-medium">Talks</Link>
-              <Link href="/contact" className="hover:text-blue-300">Contact</Link>
             </div>
           </div>
           <div className="mt-6 pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">

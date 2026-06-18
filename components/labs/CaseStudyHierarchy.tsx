@@ -29,7 +29,7 @@ const CaseStudyHierarchy: React.FC<CaseStudyHierarchyProps> = ({
   const showUserStory = hierarchy.levels.includes("userStory");
   const showAcceptanceCriteria = hierarchy.levels.includes("acceptanceCriteria");
   const userStoryLabel = hierarchy.labels.userStory ?? "User Story";
-  const userStoriesLabel = `${userStoryLabel}s`;
+  const userStoriesLabel = userStoryLabel === "User Story" ? "User Stories" : `${userStoryLabel}s`;
   const acLabel = hierarchy.labels.acceptanceCriteria ?? "Acceptance Criteria";
   const [expandedProblems, setExpandedProblems] = useState<Set<string>>(new Set());
   const [expandedUserStories, setExpandedUserStories] = useState<Set<string>>(new Set());

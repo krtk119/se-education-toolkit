@@ -327,7 +327,7 @@ export default function AboutPage() {
               <ArrowRight size={18} className="ml-2" />
             </Link>
             <a
-              href="https://github.com/yourusername/your-repo"
+              href="https://github.com/BrunelTalentMarketplace/se-education-toolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-3 bg-blue-700 text-white rounded-full font-medium hover:bg-blue-800 transition-colors"

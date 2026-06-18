@@ -107,20 +107,6 @@ const Footer = () => {
           <p className="text-xs text-gray-500 text-center md:text-left">
             © {currentYear} SE Toolkit. All rights reserved.
           </p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link
-              href="/privacy"
-              className="text-xs text-gray-500 hover:text-blue-500"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-xs text-gray-500 hover:text-blue-500"
-            >
-              Terms of Service
-            </Link>
-          </div>
         </motion.div>
       </div>
     </footer>

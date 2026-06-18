@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, Mail, Twitter, ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,18 +17,8 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/BrunelTalentMarketplace",
       icon: <Github size={18} />,
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com",
-      icon: <Twitter size={18} />,
-    },
-    {
-      name: "Email",
-      href: "mailto:info@se-toolkit.com",
-      icon: <Mail size={18} />,
     },
   ];
 

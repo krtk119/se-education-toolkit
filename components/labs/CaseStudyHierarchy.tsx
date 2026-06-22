@@ -68,11 +68,12 @@ const CaseStudyHierarchy: React.FC<CaseStudyHierarchyProps> = ({
   };
 
   const selectProblem = (problemId: string) => {
-    setSelectedProblemId(problemId);
-    setSelectedUserStoryId("");
-    setSelectedAcceptanceCriteriaIds([]);
-    onSelectionChange({ problemId, userStoryId: "", acceptanceCriteriaIds: [] });
-  };
+  const newId = selectedProblemId === problemId ? "" : problemId;
+  setSelectedProblemId(newId);
+  setSelectedUserStoryId("");
+  setSelectedAcceptanceCriteriaIds([]);
+  onSelectionChange({ problemId: newId, userStoryId: "", acceptanceCriteriaIds: [] });
+};
 
   const selectUserStory = (userStoryId: string) => {
     const newId = selectedUserStoryId === userStoryId ? "" : userStoryId;

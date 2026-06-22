@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import { Filter, Download, Search } from "lucide-react";
+import { Filter, Download, Search, RotateCcw } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import LabStep from "@/components/labs/LabStep";
@@ -180,6 +180,12 @@ const LabsPage = () => {
     downloadLabSheet(selectedLab, personaIntro, selectedHierarchicalData, topicHierarchy);
   };
 
+  const handleReset = () => {
+    setFilters({ area: "", topic: "", persona: "" });
+    setHierarchySelection({ problemId: "", userStoryId: "", acceptanceCriteriaIds: [] });
+    router.push("/labs", { scroll: false });
+  };
+  
   return (
     <main className="min-h-screen flex flex-col items-center relative overflow-hidden px-4 py-10 sm:py-12 md:py-16">
       <div className="absolute inset-0 overflow-hidden -z-10">
@@ -203,7 +209,17 @@ const LabsPage = () => {
             problem and user story to provide context for Part 2.
           </p>
         </motion.div>
-
+{(filters.area || filters.topic || filters.persona || hierarchySelection.problemId) && (
+  <div className="flex justify-end mb-2">
+    <button
+      onClick={handleReset}
+      className="flex items-center gap-2 text-sm text-gray-500 hover:text-red-500 transition-colors border border-gray-200 rounded-lg px-3 py-1.5"
+    >
+      <RotateCcw size={14} />
+      Reset
+    </button>
+  </div>
+)}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}

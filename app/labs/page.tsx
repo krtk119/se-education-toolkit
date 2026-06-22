@@ -206,7 +206,9 @@ const LabsPage = () => {
         <div className="bg-white/30 backdrop-blur-sm border border-white/20 rounded-xl mb-6 sm:mb-8 overflow-hidden">
           <button
             type="button"
-            onClick={() => setIsGuideOpen(!isGuideOpen)}
+            aria-expanded={isGuideOpen}
+            aria-controls="labs-howto-guide"
+            onClick={() => setIsGuideOpen((open) => !open)}
             className="w-full flex items-center justify-between p-4 sm:p-5 hover:bg-white/20 transition-colors"
           >
             <span className="text-sm sm:text-base font-semibold text-gray-800">
@@ -218,11 +220,11 @@ const LabsPage = () => {
             />
           </button>
           {isGuideOpen && (
-            <div className="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-white/20">
+            <div id="labs-howto-guide" className="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-white/20">
               <ol className="space-y-2 mt-3">
                 <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">1.</span> Select your <strong>Area</strong> and <strong>Topic</strong> to load a lab.</li>
                 <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">2.</span> Choose a <strong>Persona</strong> to set the AI tone.</li>
-                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">3.</span> Select a <strong>Problem</strong> and case study to provide context for Part 2.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">3.</span> Select a <strong>Problem</strong> and <strong>User Story</strong> to provide context for Part 2.</li>
                 <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">4.</span> Open your preferred AI tool (e.g. ChatGPT, Claude, Gemini).</li>
                 <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">5.</span> Copy the <strong>Part 1</strong> prompt and paste it into your AI tool to set up the exercise.</li>
                 <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">6.</span> Copy the <strong>Part 2</strong> context and paste it into the same chat to start the exercise.</li>

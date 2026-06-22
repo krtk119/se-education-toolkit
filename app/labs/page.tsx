@@ -172,7 +172,8 @@ const LabsPage = () => {
     if (hierarchySelection.problemId) params.set("problemId", hierarchySelection.problemId);
     if (hierarchySelection.userStoryId) params.set("userStoryId", hierarchySelection.userStoryId);
     if (hierarchySelection.acceptanceCriteriaIds.length > 0) params.set("acceptanceCriteriaIds", hierarchySelection.acceptanceCriteriaIds.join(","));
-    router.push(`/labs?${params.toString()}`, { scroll: false });
+    const queryString = params.toString();
+    router.push(queryString ? `/labs?${queryString}` : "/labs", { scroll: false });
   }, [filters, hierarchySelection, router]);
 
   const handleDownload = () => {
@@ -183,7 +184,6 @@ const LabsPage = () => {
   const handleReset = () => {
     setFilters({ area: "", topic: "", persona: "" });
     setHierarchySelection({ problemId: "", userStoryId: "", acceptanceCriteriaIds: [] });
-    router.push("/labs", { scroll: false });
   };
   
   return (
@@ -209,7 +209,12 @@ const LabsPage = () => {
             problem and user story to provide context for Part 2.
           </p>
         </motion.div>
-{(filters.area || filters.topic || filters.persona || hierarchySelection.problemId) && (
+{(filters.area ||
+  filters.topic ||
+  filters.persona ||
+  hierarchySelection.problemId ||
+  hierarchySelection.userStoryId ||
+  hierarchySelection.acceptanceCriteriaIds.length > 0) && (
   <div className="flex justify-end mb-2">
     <button
       onClick={handleReset}

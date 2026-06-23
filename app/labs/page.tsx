@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
-import { Filter, Download, Search, RotateCcw } from "lucide-react";
+import { Filter, Download, Search, RotateCcw, ChevronDown } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import LabStep from "@/components/labs/LabStep";
@@ -29,7 +29,7 @@ const LabsPage = () => {
 
   const areas = useMemo(() => getAreas(), []);
   const personas = useMemo(() => getPersonas(), []);
-
+  const [isGuideOpen, setIsGuideOpen] = useState(true);
   const [filters, setFilters] = useState({
     area: "",
     topic: "",
@@ -225,6 +225,36 @@ const LabsPage = () => {
     </button>
   </div>
 )}
+        <div className="bg-white/30 backdrop-blur-sm border border-white/20 rounded-xl mb-6 sm:mb-8 overflow-hidden">
+          <button
+            type="button"
+            aria-expanded={isGuideOpen}
+            aria-controls="labs-howto-guide"
+            onClick={() => setIsGuideOpen((open) => !open)}
+            className="w-full flex items-center justify-between p-4 sm:p-5 hover:bg-white/20 transition-colors"
+          >
+            <span className="text-sm sm:text-base font-semibold text-gray-800">
+              How to use this platform
+            </span>
+            <ChevronDown
+              size={18}
+              className={`text-gray-500 transition-transform duration-200 ${isGuideOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+          {isGuideOpen && (
+            <div id="labs-howto-guide" className="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-white/20">
+              <ol className="space-y-2 mt-3">
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">1.</span> Select your <strong>Area</strong> and <strong>Topic</strong> to load a lab.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">2.</span> Choose a <strong>Persona</strong> to set the AI tone.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">3.</span> Select a <strong>Problem</strong> and <strong>User Story</strong> to provide context for Part 2.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">4.</span> Open your preferred AI tool (e.g. ChatGPT, Claude, Gemini).</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">5.</span> Copy the <strong>Part 1</strong> prompt and paste it into your AI tool to set up the exercise.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">6.</span> Copy the <strong>Part 2</strong> context and paste it into the same chat to start the exercise.</li>
+                <li className="text-sm text-gray-600"><span className="font-medium text-gray-800">7.</span> Download the <strong>Lab Sheet</strong> for an offline copy to share with students.</li>
+              </ol>
+            </div>
+          )}
+        </div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
